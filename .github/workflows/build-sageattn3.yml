@@ -107,18 +107,12 @@ jobs:
           $Env:PIP_INDEX_URL = "http://127.0.0.1:8000"
 
           $Env:DISTUTILS_USE_SDK = "1"
-          $Env:TORCH_CUDA_ARCH_LIST = "12.0 "
+          $Env:TORCH_CUDA_ARCH_LIST = "12.0+PTX "
           $Env:TORCH_CUDA_ARCH_LIST += "${{ inputs.extra_cuda_arch }}"
           $Env:SAGEATTENTION_WHEEL_VERSION_SUFFIX = "+cu${{ inputs.cuda_major }}${{ inputs.cuda_minor }}torch2.${{ inputs.torch_minor }}.${{ inputs.torch_patch }}"
           $Env:SAGEATTENTION_WHEEL_VERSION_SUFFIX += "${{ inputs.extra_wheel_version_suffix }}"
-          if ("${{ inputs.is_python_abi3 }}")
-          {
-            $Env:CIBW_BUILD = "{cp313-win_amd64,}"
-          }
-          else
-          {
-            $Env:CIBW_BUILD = "{cp313-win_amd64}"
-          }
+          $Env:CIBW_BUILD = "cp313-win_amd64"
+           
           $Env:CIBW_BUILD_VERBOSITY = "1"
           # Sometimes torch may conflict with cibuildwheel's pinned dependency versions
           # $Env:CIBW_DEPENDENCY_VERSIONS = "latest"
