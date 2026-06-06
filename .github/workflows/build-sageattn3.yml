@@ -101,7 +101,7 @@ jobs:
           $Env:TORCH_MINOR_VERSION = "${{ inputs.torch_minor }}"
           $Env:TORCH_PATCH_VERSION = "${{ inputs.torch_patch }}"
           $Env:TORCH_IS_NIGHTLY = "${{ inputs.torch_is_nightly }}"
-          python update_pyproject.py
+          # python update_pyproject.py
 
           Start-Process -NoNewWindow simpleindex simpleindex.toml
           $Env:PIP_INDEX_URL = "http://127.0.0.1:8000"
@@ -113,11 +113,11 @@ jobs:
           $Env:SAGEATTENTION_WHEEL_VERSION_SUFFIX += "${{ inputs.extra_wheel_version_suffix }}"
           if ("${{ inputs.is_python_abi3 }}")
           {
-            $Env:CIBW_BUILD = "{cp310-win_amd64,}"
+            $Env:CIBW_BUILD = "{cp313-win_amd64,}"
           }
           else
           {
-            $Env:CIBW_BUILD = "{cp310-win_amd64,cp311-win_amd64,cp312-win_amd64,cp313-win_amd64,cp314-win_amd64}"
+            $Env:CIBW_BUILD = "{cp313-win_amd64}"
           }
           $Env:CIBW_BUILD_VERBOSITY = "1"
           # Sometimes torch may conflict with cibuildwheel's pinned dependency versions
