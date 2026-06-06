@@ -101,7 +101,7 @@ jobs:
           $Env:TORCH_MINOR_VERSION = "${{ inputs.torch_minor }}"
           $Env:TORCH_PATCH_VERSION = "${{ inputs.torch_patch }}"
           $Env:TORCH_IS_NIGHTLY = "${{ inputs.torch_is_nightly }}"
-          # python update_pyproject.py
+          python update_pyproject.py
 
           Start-Process -NoNewWindow simpleindex simpleindex.toml
           $Env:PIP_INDEX_URL = "http://127.0.0.1:8000"
