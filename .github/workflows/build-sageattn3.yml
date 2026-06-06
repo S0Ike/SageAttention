@@ -53,6 +53,11 @@ on:
         required: false
         type: string
         default: ''
+      cibw_build_override:
+        description: CIBW_BUILD override
+        required: false
+        type: string
+        default: 'cp313-win_amd64'
 
 jobs:
   build-sageattn3:
