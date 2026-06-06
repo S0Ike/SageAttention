@@ -12,7 +12,7 @@ on:
         description: PyTorch minor version
         required: true
         type: string
-        default: '12'
+        default: '11'
       torch_patch:
         description: PyTorch patch version
         required: true
