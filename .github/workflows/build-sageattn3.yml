@@ -42,7 +42,7 @@ on:
         description: Extra CUDA arch
         required: false
         type: string
-        default: '12.0+PTX'
+        default: ''
       extra_wheel_version_suffix:
         description: Extra wheel version suffix
         required: false
